@@ -1616,7 +1616,7 @@ cy.eyesCheckWindow('mark as completed');
 
 <br/><br/>
 
-## ⚪ ️ 4.3 Measure logical coverage using mutation testing
+## ⚪ ️ 4.3 使用突变检查衡量逻辑覆盖率
 
 :white_check_mark: **最佳实践：**  传统的覆盖率指标通常是：它可能会向你展示100%的代码覆盖率，但你的函数没有任何一个返回了正确的响应。怎么会这样？它只是衡量测试访问了哪几行代码，但没有检查测试是否测试了所有东西——断言正确的响应。像是一个出差旅行并出示护照印章的人一样——这不能证明他完成了任何工作，只能证明他去过几个机场和酒店。
 
@@ -1627,12 +1627,6 @@ cy.eyesCheckWindow('mark as completed');
 （2）它运行测试，如果所有都成功了那我们就遇到了问题——测试没有达到发现bugs的目的，这种突变就是所谓的存活。如果测试失败了，那么很好，突变被干掉了。
 
 知道所有或大部分突变被干掉比传统的覆盖率有更高的置信度，并且布置（测试）的时间是相近的。
-
-Mutation-based testing is here to help by measuring the amount of code that was actually TESTED not just VISITED. [Stryker](https://stryker-mutator.io/) is a JavaScript library for mutation testing and the implementation is really neat:
-
-(1) it intentionally changes the code and “plants bugs”. For example the code newOrder.price===0 becomes newOrder.price!=0. This “bugs” are called mutations
-
-(2) it runs the tests, if all succeed then we have a problem — the tests didn’t serve their purpose of discovering bugs, the mutations are so-called survived. If the tests failed, then great, the mutations were killed.
 
 <br/>
 
@@ -1925,7 +1919,6 @@ license-checker --summary --failOn BSD
 :white_check_mark: **最佳实践：**这篇文章专注于和Node JS相关的测试建议，或者至少能用Node JS举例说明。然而这一节，收集了一些与Node无关但很著名的技巧
 
  <ol class="postList"><li name="e3e4" id="e3e4" class="graf graf--li graf-after--p">使用声明式语法。这是大多数供应商的唯一选择但老版本的Jenkins允许使用代码或UI</li><li name="1fdc" id="1fdc" class="graf graf--li graf-after--li">选择具有原生Docker支持的供应商</li><li name="edcd" id="edcd" class="graf graf--li graf-after--li">尽早失败，优先运行你最快的测试。在每一步/每个里程碑中创建一个“冒烟测试”，集合多种快速检查（如linting、单元测试），并向代码提交者提供快速的反馈</li><li name="0375" id="0375" class="graf graf--li graf-after--li">使浏览所有的构建工件变得简单，包括测试报告、覆盖率报告、变异报告、日志等等</li><li name="df82" id="df82" class="graf graf--li graf-after--li">为每个事件创建多个pipelines/任务，并复用它们间的步骤。比如，为feature分支的提交配置一个任务，再为master分支的PR配置另一个。让每个复用逻辑使用共享的步骤（大部分供应商提供了一些代码复用的机制）</li><li name="19b0" id="19b0" class="graf graf--li graf-after--li">从不在工作声明中嵌入敏感信息，把它们从一个存储敏感信息的地方或任务配置中拿掉</li><li name="b70d" id="b70d" class="graf graf--li graf-after--li">在发行版本中显式地升级版本，或至少确保开发者这么做了</li><li name="957c" id="957c" class="graf graf--li graf-after--li">仅构建一次，并在单个构建工件上执行所有检查（如Docker镜像）</li><li name="339b" id="339b" class="graf graf--li graf-after--li">在临时环境中进行测试，该环境的状态不会在构建间变化。缓存node_modules可能是唯一的例外</li></ol>
-
 <br/>
 
 
